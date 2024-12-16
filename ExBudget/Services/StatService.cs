@@ -157,7 +157,7 @@ namespace ExBudget.Services
 
                 foreach (var transaction in transactions)
                 {
-                    totalAmountForCategoryatefory = transaction.Amount;
+                    totalAmountForCategoryatefory += transaction.Amount;
                 }
 
                 DataPoint pointIncome = new DataPoint(0, float.Parse(totalAmountForCategoryatefory.ToString()))
@@ -199,7 +199,9 @@ namespace ExBudget.Services
                         {
                             totalTypeAmount += transaction.Amount;
                         }
+
                     }
+
 
                     DataPoint point = new DataPoint(0, float.Parse(totalTypeAmount.ToString()))
                     {
@@ -273,7 +275,6 @@ namespace ExBudget.Services
                     foreach (var transaction in transactions)
                     {
                         totalDayAmount += transaction.Amount;
-                        Console.WriteLine($"{type.ToString()} - {category}: {totalDayAmount}");
                     }
                 }
                 series.Points.AddXY(currentDate.ToString("yyyy-MM-dd"), totalDayAmount);
